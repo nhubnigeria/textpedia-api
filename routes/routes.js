@@ -51,7 +51,7 @@ router.post('/confirm', function (req, res) {
 //Messaging API Routes
 router.post('/messaging_inbound', function (req, res) {
   console.log('inbound sms');
-  console.log(req);
+  console.log(req.body.Body);
   //Handles inbound msgs from Twilio
   // var
   //   p_num = req.body.From,
