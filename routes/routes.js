@@ -50,11 +50,13 @@ router.post('/confirm', function (req, res) {
 });
 //Messaging API Routes
 router.post('/messaging_inbound', function (req, res) {
+  console.log('inbound sms');
+  console.log(req);
   //Handles inbound msgs from Twilio
-  var
-    p_num = req.body.From,
-    k_words = req.body.Body;
-    isRegistered(p_num, k_words);
+  // var
+  //   p_num = req.body.From,
+  //   k_words = req.body.Body;
+  //   isRegistered(p_num, k_words);
   return res.type('text/xml').status(200).send(INBOUND_RESP);
 });
 //=============================================================================
