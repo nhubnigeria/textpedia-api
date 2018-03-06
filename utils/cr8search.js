@@ -4,7 +4,7 @@
  */
 //=============================================================================
 const
-  cp = require('child_process'),
+  scrape = require('./scraper'),
   sendReport = require('./sendReport'),
   sendCorrection = require('./sendCorrection');
 //=============================================================================
@@ -12,35 +12,36 @@ const
  * Module variables
  */
 //=============================================================================
-const
-  SCRAPER_PATH = __dirname + '/scraper/scraper.py';
 //=============================================================================
 /**
  * Export Module
  */
 //=============================================================================
 module.exports = function (email, p_num, k_words) {
-  //NB child_process pattern is 'cmd, [file_path, args.....]'
-  const
-    words = k_words.split(','),
-    args = [SCRAPER_PATH].concat(words),
-    scraper = cp.spawn('python3', args);
-  let chunk = '';
+  const words = k_words.split(',');
+  let data = scrape(words);
+  console.log('done scraping');
+  console.log(data);
+  let corrections = '';
+  let report = '';
 
-  scraper.stdout.on('data', function (data) {
-    chunk += data
-  });
-  scraper.stdout.on('close', function () {
-    if(chunk.trim() == 'poor keyword') {
-      return sendCorrection(k_words, p_num);
+  for (const key in data) {
+    if (data[key].trim() == 'poor keyword') {
+      corrections += data[key] + ','
     }
     else {
-      return sendReport(email, chunk, p_num);
+      report += '<h2>' + key + '</h2><br>' + data[key] + '<hr>';
     }
-  });
-  scraper.stderr.on('data', function (err) {
-    console.log('there was an err with scraper');
-    return console.error(err.toString());
-  });
+  }
+
+  if (corrections !== '') {
+    'sending correction'
+    return sendCorrection(corrections, p_num);
+  }
+
+  if (report !== '') {
+    'sending report'
+    return sendReport(email, chunk, p_num);
+  }
 };
 //=============================================================================

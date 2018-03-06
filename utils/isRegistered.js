@@ -22,8 +22,8 @@ module.exports = function (p_num, k_words) {
       return null;
     }
     else {
-      console.log(k_words)
-      // return cr8search(user.email, p_num, k_words);
+      console.log('cr8Search');
+      return cr8search(user.email, p_num, k_words);
     }
   });
 };
