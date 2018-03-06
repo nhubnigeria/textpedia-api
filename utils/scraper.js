@@ -21,30 +21,30 @@ async function fetchKeyword(k_word, page) {
   if(noResult) {
     return 'poor keyword'
   } else {
-		let toc = await page.$(tocSelector);
-		if (!toc) {
+    let toc = await page.$(tocSelector);
+    if (!toc) {
       // No table of content. Select the first paragraph
-			let abstractElement = await page.$(abstractSelector);
-			let abstractText = await page.evaluate(el => el.textContent, abstractElement);
+      let abstractElement = await page.$(abstractSelector);
+      let abstractText = await page.evaluate(el => el.textContent, abstractElement);
       let abstract = abstractText.replace(/\[(.*?)\]/g, '');
       return abstract;
-		}
-		else {
-			let abstract=''
-			let abstractElements = await page.$$(abstractSelector);
-			for (let i = 0; i < abstractElements.length; i++) {
-				let abstractElement = abstractElements[i];
-				let abstractText = await page.evaluate(el => el.textContent, abstractElement);
-				if(abstractText.trim() == '') {
-					break;
-				}
-				else {
+    }
+    else {
+      let abstract=''
+      let abstractElements = await page.$$(abstractSelector);
+      for (let i = 0; i < abstractElements.length; i++) {
+        let abstractElement = abstractElements[i];
+        let abstractText = await page.evaluate(el => el.textContent, abstractElement);
+        if(abstractText.trim() == '') {
+          break;
+        }
+        else {
           abstract = abstract + abstractText.replace(/\[(.*?)\]/g, '') + '\n';
-				}
-			}
-			return abstract;
-		}
-	}
+        }
+      }
+      return abstract;
+    }
+  }
 }
 //=============================================================================
 /**
