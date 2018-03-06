@@ -53,6 +53,8 @@ async function fetchKeyword(k_word, page) {
 //=============================================================================
 module.exports = async function (k_words) {
   console.log('in scraper');
+  // Launching chrome without sandbox because of Heroku
+  // (https://github.com/GoogleChrome/puppeteer/issues/758#issuecomment-328906039)
   const browser = await puppeteer.launch({timeout: 0, args: ['--no-sandbox', '--disable-setuid-sandbox']})
   const page = await browser.newPage();
 

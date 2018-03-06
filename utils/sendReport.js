@@ -31,7 +31,7 @@ module.exports = function (email, report, p_num) {
     to: email,
     from: 'research@textpedia.com',
     subject: 'Your research results',
-    text: 'Hi, ' + os.EOL + os.EOL +'Thanks for using the Textpedia service, your' +
+    html: 'Hi, ' + os.EOL + os.EOL +'Thanks for using the Textpedia service, your' +
       ' research results are:' + os.EOL + os.EOL + report
   };
   //send email

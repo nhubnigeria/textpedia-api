@@ -27,7 +27,7 @@ module.exports = async function (email, p_num, k_words) {
 
   for (const key in data) {
     if (data[key].trim() == 'poor keyword') {
-      corrections += data[key] + ','
+      corrections += key + ','
     }
     else {
       report += '<h2>' + key + '</h2><br>' + data[key] + '<hr>';
@@ -35,13 +35,15 @@ module.exports = async function (email, p_num, k_words) {
   }
 
   if (corrections !== '') {
-    'sending correction'
-    return sendCorrection(corrections, p_num);
+    console.log('sending correction');
+    sendCorrection(corrections, p_num);
   }
 
   if (report !== '') {
-    'sending report'
-    return sendReport(email, report, p_num);
+    console.log('sending report');
+    sendReport(email, report, p_num);
   }
+
+  return console.log('scraper done');
 };
 //=============================================================================
