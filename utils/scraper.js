@@ -53,7 +53,7 @@ async function fetchKeyword(k_word, page) {
 //=============================================================================
 module.exports = async function (k_words) {
   console.log('in scraper');
-  const browser = await puppeteer.launch({timeout: 0});
+  const browser = await puppeteer.launch({timeout: 0, args: ['--no-sandbox', '--disable-setuid-sandbox']})
   const page = await browser.newPage();
 
   let result = {}
