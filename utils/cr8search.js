@@ -41,7 +41,7 @@ module.exports = async function (email, p_num, k_words) {
 
   if (report !== '') {
     'sending report'
-    return sendReport(email, chunk, p_num);
+    return sendReport(email, report, p_num);
   }
 };
 //=============================================================================
