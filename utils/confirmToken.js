@@ -14,7 +14,7 @@ module.exports = function (token, p_num, res) {
     if(err) {
       console.log('There was a dB access error in retrieving the user');
       console.error(err);
-      throw err;
+      return res.status(500).json('There was an error retrieving the user\'s details');
     }
     const USR_TOKEN = user.temp_token.value;
     if(token == USR_TOKEN) {

@@ -35,7 +35,7 @@ router.post('/confirm', function (req, res) {
     if(err) {
       console.log('There was an error verifying the JWT');
       console.error(err);
-      throw err;
+      return res.status(500).json('There was an error verifying the JWT');
     }
     else {
       if(Date.now() - new Date(token.time).getTime() <= 5 * 60 * 1000) {
