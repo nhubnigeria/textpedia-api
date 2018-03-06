@@ -17,9 +17,9 @@ const
  * Export Module
  */
 //=============================================================================
-module.exports = function (email, p_num, k_words) {
+module.exports = async function (email, p_num, k_words) {
   const words = k_words.split(',');
-  let data = scrape(words);
+  let data = await scrape(words);
   console.log('done scraping');
   console.log(data);
   let corrections = '';
