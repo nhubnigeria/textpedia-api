@@ -10,7 +10,8 @@ const
   compression = require('compression'),
   path = require('path'),
   config = require('./config/config'),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  cors = require('cors');
 //=============================================================================
 /**
  * Create Express App
@@ -68,6 +69,7 @@ process.on('SIGINT', function () {
  * Middleware Stack
  */
 //=============================================================================
+app.use(cors());
 app.use(logger('dev'));
 app.use(bParser.json());
 app.use(bParser.urlencoded({extended: true}));
