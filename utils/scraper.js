@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer');
  */
 //=============================================================================
 const tocSelector = '#toc',
-  noResultsSelector = '#mw-content-text > div > p.mw-search-nonefound',
+  noResultsSelector = '#mw-content-text > div.searchresults',
   abstractSelector = '#mw-content-text > div.mw-parser-output > p';
 
 const baseURLPrefix = 'https://en.wikipedia.org/wiki/Special:Search?search=',
