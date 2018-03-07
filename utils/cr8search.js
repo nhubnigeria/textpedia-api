@@ -30,7 +30,7 @@ module.exports = async function (email, p_num, k_words) {
       corrections += key + ','
     }
     else {
-      report += '<h2>' + key + '</h2><br>' + data[key] + '<hr>';
+      report += '<h2>' + key + '</h2>' + data[key] + '<hr>';
     }
   }
 

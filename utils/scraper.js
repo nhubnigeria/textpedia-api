@@ -3,7 +3,9 @@
  * Module dependencies
  */
 //=============================================================================
-const puppeteer = require('puppeteer');
+const
+  os = require('os'),
+  puppeteer = require('puppeteer');
 //=============================================================================
 /**
  * Module variables
@@ -39,7 +41,7 @@ async function fetchKeyword(k_word, page) {
           break;
         }
         else {
-          abstract = abstract + abstractText.replace(/\[(.*?)\]/g, '') + '\n';
+          abstract = abstract + abstractText.replace(/\[(.*?)\]/g, '') + '<br>';
         }
       }
       return abstract;
