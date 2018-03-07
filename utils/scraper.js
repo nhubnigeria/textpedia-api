@@ -41,7 +41,7 @@ async function fetchKeyword(k_word, page) {
           break;
         }
         else {
-          abstract = abstract + abstractText.replace(/\[(.*?)\]/g, '') + '<br>';
+          abstract = abstract + abstractText.replace(/\[(.*?)\]/g, '') + '<br><br>';
         }
       }
       return abstract;
