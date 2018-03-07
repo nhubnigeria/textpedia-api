@@ -14,17 +14,16 @@ module.exports = function (token, p_num, res) {
     if(err) {
       console.log('There was a dB access error in retrieving the user');
       console.error(err);
-      return res.status(500).json('There was an error retrieving the user\'s details');
+      return res.status(500).json('User details unavailable');
     }
     const USR_TOKEN = user.temp_token.value;
     if(token == USR_TOKEN) {
       user.active = true;
       user.temp_token.value = '';
-      sendNumber(user.email, process.env.TWILIOLivePhoneNumber);
-      return res.status(200).json('Your account has been verified!');
+      return sendNumber(user.email, process.env.TWILIOLivePhoneNumber, res);
     }
     else {
-      return res.status(403).json('There was a problem confirming the token. Please retry in 2 hours.');
+      return res.status(403).json('There was a problem confirming the token. Retry in 2 hours.');
     }
   });
 };

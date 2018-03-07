@@ -25,7 +25,7 @@ const
  * Export Module
  */
 //=============================================================================
-module.exports = function (email, txtp_phone_num) {
+module.exports = function (email, txtp_phone_num, res) {
   const msg = {
     to: email,
     from: 'welcome@textpedia.com',
@@ -41,10 +41,10 @@ module.exports = function (email, txtp_phone_num) {
     if(err) {
       console.log('There was an error sending the endpoint number to the user\'s email');
       console.error(err);
-      throw err;
+      return res.status(500).json('There was an error while sending the end-point phone number to your email address');
     }
     else {
-      return console.log(resp);
+      return res.status(200).json('Your account has been verified!');
     }
   });
 };

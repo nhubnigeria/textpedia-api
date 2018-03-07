@@ -37,7 +37,7 @@ function cr8NewUser(p_num, email, res) {
     if(err) {
       console.log('There was an error saving the created user');
       console.error(err);
-      return res.status(500).json('There was an error saving the user\'s details');
+      return res.status(500).json('Unable to save user details');
     }
     else {
       const JWT = jwt.sign({
@@ -58,17 +58,17 @@ module.exports = function (email, p_num, res) {
     if(err) {
       console.log('There was a db access error');
       console.error(err);
-      return res.status(500).json('There was an error retrieving the user\'s details');
+      return res.status(500).json('User details unavailable');
     }
     if(user && (Date.now() - new Date(user.temp_token.time).getTime() < 2 * 60 * 60 * 1000)) {
-      return res.status(409).json('Phone number already in use!');
+      return res.status(409).json('Phone number is already in use');
     }
     else if(user && (Date.now() - new Date(user.temp_token.time).getTime() >= 2 * 60 * 60 * 1000)) {
       user.remove(function (err) {
         if(err) {
           console.log('There was an error removing old user record from dB');
           console.error(err);
-          return res.status(500).json('There was an error creating the user');
+          return res.status(500).json('There was an error while saving the user details.');
         }
         return cr8NewUser(p_num, email, res);
       });

@@ -16,9 +16,10 @@ module.exports = function (p_num, k_words) {
     if(err) {
       console.log('There was an error accessing the db');
       console.error(err);
-      throw err;
+      return null;
     }
     else if(!user) {
+      console.log('User does not exist');
       return null;
     }
     else {

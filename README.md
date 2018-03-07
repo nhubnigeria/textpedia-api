@@ -30,3 +30,6 @@ Method: POST
 Endpoint: /confirm
 
 Method: POST
+
+### Contributors
+* [Victor Olowe](https://github.com/1hndrxx)
