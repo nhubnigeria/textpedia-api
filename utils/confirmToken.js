@@ -21,10 +21,10 @@ module.exports = function (token, p_num, res) {
       user.active = true;
       user.temp_token.value = '';
       sendNumber(user.email, process.env.TWILIOLivePhoneNumber);
-      return res.status(200).json('All good!');
+      return res.status(200).json('Your account has been verified!');
     }
     else {
-      return res.status(403).json('retry in 2 hours');
+      return res.status(403).json('There was a problem confirming the token. Please retry in 2 hours.');
     }
   });
 };
