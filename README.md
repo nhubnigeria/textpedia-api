@@ -5,7 +5,7 @@ Repo for the Textpedia API
 
 ```
 {
-	"data": {
+  "data": {
     "email": "email",
     "phoneNumber": "phoneNumber"
   }
@@ -16,11 +16,11 @@ Endpoint: /submit
 
 Method: POST
 
-###CONFIRM TOKEN
+### CONFIRM TOKEN
 
 ```
 {
-	"data": {
+  "data": {
     "jwt": "jwt",
     "token": "auth token"
   }
