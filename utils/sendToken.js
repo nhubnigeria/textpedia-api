@@ -43,7 +43,7 @@ module.exports = function (token, email, JWT, res) {
     if(err) {
       console.log('There was an error sending the token to the user\'s email');
       console.error(err);
-      return res.status(500).json('Email not sent!');
+      return res.status(500).json('There was an error sending the token to the user\'s email');
     }
     else {
       console.log(resp);
