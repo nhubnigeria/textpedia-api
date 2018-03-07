@@ -32,7 +32,7 @@ module.exports = function (email, report, p_num) {
     from: 'research@textpedia.com',
     subject: 'Your research results',
     html: 'Hi, ' + os.EOL + os.EOL +'Thanks for using the Textpedia service, your' +
-      ' research results are:' + os.EOL + os.EOL + report
+      ' research results are:' + os.EOL + os.EOL + report + 'The Textpedia Team'
   };
   //send email
   mailer.sendMail(msg, function(err, res) {
