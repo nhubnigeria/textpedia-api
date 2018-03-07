@@ -60,7 +60,7 @@ module.exports = async function (k_words) {
 
   let result = {}
   for (let i = 0; i < k_words.length; i++) {
-    const k_word = k_words[i];
+    const k_word = k_words[i].trim();
     const targetURL = baseURLPrefix + k_word + baseURLSuffix
     await page.goto(targetURL);
     result[k_word] = await fetchKeyword(k_word, page);

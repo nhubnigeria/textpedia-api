@@ -26,7 +26,7 @@ module.exports = async function (email, p_num, k_words) {
   let report = '';
 
   for (const key in data) {
-    if (data[key].trim() == 'poor keyword') {
+    if (data[key] == 'poor keyword') {
       corrections += key + ','
     }
     else {
